@@ -113,14 +113,23 @@ def getScore(name):
 
     first_tag = '<div class="fenshu">'
     last_tag = '</div><a name="zhuanye">'
-    score = html[html.index(first_tag) + len(first_tag): html.index(last_tag)]
-    print("名字：{}  分数：{}".format(name, score))
-    writeDown("{},{}".format(name, score), TESTED_FILE)
-    if score and int(score) >= THRESHOLD_SCORE:
-        # 符合阈值要求的结果记录到结果文本
-        result = ','.join([name, score, detail_url])
-        writeDown(result, RESULT_FILE)
-    return score
+    try:
+        score = html[html.index(first_tag) + len(first_tag): html.index(last_tag)]
+        print("名字：{}  分数：{}".format(name, score))
+        writeDown("{},{}".format(name, score), TESTED_FILE)
+        if score and int(score) >= THRESHOLD_SCORE:
+            # 符合阈值要求的结果记录到结果文本
+            result = ','.join([name, score, detail_url])
+            writeDown(result, RESULT_FILE)
+        return score
+    except AttributeError as err:
+        print("AttributeError error: {0}".format(err))
+    except UnboundLocalError as err:
+        print("UnboundLocalError error: {0}".format(err))
+
+
+
+
 
 
 def getBaijiaxingData():
