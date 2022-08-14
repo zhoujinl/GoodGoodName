@@ -4,6 +4,7 @@ import requests
 from conf import config, constants
 from data import full_wuxing_dict as fwd
 from conf.config import MIN_SINGLE_NUM, MAX_SINGLE_NUM, SEX, THRESHOLD_SCORE
+from conf.config import headers, quming_dafen_url
 
 TESTED_FILE = 'result/name_tested.txt'  # 已经在网站测试过的名字
 RESULT_FILE = 'result/name.txt'  # 结果算到的好名字
@@ -74,19 +75,19 @@ def writeDown(result, file_name):
 
 def getHtml(url, req_params=None, req_headers=None):
     if req_headers is None:
-        req_headers = {}
+        req_headers = headers
     if req_params is None:
         req_params = {}
 
     try:
-        common_params = dict(timeout=5, headers=req_headers)
+        common_params = dict(timeout=10, headers=req_headers)
         if req_params and req_headers:
             r = requests.get(url, params=req_params, **common_params)
         else:
-            r = requests.get(url, **common_params)
+            r = requests.get(url, headers=req_headers)
 
-        # print(r.text, )
-        # print(r.url, r.encoding, r.status_code, r.headers)
+        #print(r.text)
+        print(r.url, r.encoding, r.status_code, r.headers)
         r.raise_for_status()
 
         return r.text
@@ -108,9 +109,8 @@ def getScore(name):
         print(name, '出错：', str(e))
         return
     s = parse.quote(SEX.encode('gb2312'))
-    detail_url = "http://www.qimingzi.net/simpleReport.aspx?surname=" + surname + "&name=" + lastname + "&sex=" + s
+    detail_url = quming_dafen_url + "surname=" + surname + "&name=" + lastname + "&sex=" + s
     html = getHtml(detail_url)
-
     first_tag = '<div class="fenshu">'
     last_tag = '</div><a name="zhuanye">'
     try:
