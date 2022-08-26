@@ -24,6 +24,9 @@ quming_dafen_url = 'http://www.qimingzi.net/simpleReport.aspx?'
 
 # 可直接测试
 quming_dafen_url2 = 'https://www.threetong.com/ceming/baziceming/'
+
+# 测试评分网站-1
+quming_dafen_url3 = 'http://m.sheup.net/m/cesuan_xingming_1.php'
 # 首先在http://www.qimingzi.net/ 网站提交基本信息，点击开始起名，F12查看请求信息把Cookie复制下来
 #headers = {"Cookie": "__51cke__=; Hm_lvt_1f1b125fd1b03fdb6cac5abdd0f5d306=1660446110; ASP.NET_SessionId=15ypbzw01bd404fvqagi5qme; __tins__5033285={\"sid\": 1660446109329, \"vd\": 9, \"expires\": 1660448937029}; 53gid2=12395362411005; 53gid0=12395362411005; 53gid1=12395362411005; 53revisit=1660447147569; 53kf_72241622_from_host=www.qimingzi.net; 53kf_72241622_land_page=http%3A%2F%2Fwww.qimingzi.net%2FsimpleReport.aspx; kf_72241622_land_page_ok=1; 53uvid=1; onliner_zdfq72241622=0; visitor_type=old; 53kf_72241622_keyword=http://www.qimingzi.net/simpleReport.aspx; __tins__20674741={\"sid\": 1660452910072, \"vd\": 1, \"expires\": 1660454710072}; __51laig__=15; Hm_lpvt_1f1b125fd1b03fdb6cac5abdd0f5d306=1660452910",
 #           "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36"}
